@@ -1,3 +1,1 @@
 # hidden-dengue
-
-teste
