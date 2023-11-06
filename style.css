@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #aacc9d;
+}
+
+.menu-principal {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-principal-img {
+    max-height: 1200px;
+    max-width: 1200px;
+    overflow: hidden;
+}
