@@ -70,7 +70,7 @@ button:hover {
     box-shadow: 0 0 10px var(--cinza-principal);
 }
 
-img {
+.mosquito {
     position: absolute;
     right: 0;
     bottom: 0;

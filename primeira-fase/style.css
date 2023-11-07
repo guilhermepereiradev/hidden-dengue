@@ -1,0 +1,49 @@
+@import "/style.css";
+
+body {
+    background-image: none;
+    background-color: var(--verde-principal);
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.imagem-cenario {
+    max-height: 600px;
+    max-width: 600px;
+    border-radius: 8px;
+    margin: 1%;
+}
+
+.lateral {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5%;
+}
+
+.historia {
+    padding: 40px;
+    font-size: 1.25em;
+    text-align: center;
+    background-color: var(--amarelo-principal);
+    color: var(--cinza-principal);
+    border-radius: 20px;
+    border: 5px solid var(--cinza-principal);
+}
+
+.objeto-imagem {
+    max-height: 50px;
+    margin: 10%;
+}
+
+.objetos {
+    margin-top: 20%;
+}
+
+.voltar {
+    margin-left: 1%;
+}
