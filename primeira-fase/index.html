@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,60 @@
     <link rel="stylesheet" href="/primeira-fase/style.css">
     <link rel="shortcut icon" type="imagex/png" href="/img/mosquito-dengue.png">
 </head>
+
 <body>
     <div class="content">
-        <img class="imagem-cenario" src="/assets/primeira-fase/cenario-primeira-fase.jpeg" alt="Cenário">
+        <img class="imagem-cenario" src="/assets/primeira-fase/cenario-primeira-fase.jpeg" alt="Cenário"
+            usemap="#objetos">
+        <map name="objetos">
+            <area shape="poly" coords="291, 473, 315, 475, 342, 473, 364, 477, 379, 486, 387, 499, 389, 514, 390, 527,
+             385, 540, 370, 553, 346, 560, 319, 572, 291, 554, 280, 550, 272, 540, 271, 521, 275, 500" alt="pneu"
+                id="pneu">
+            <area shape="poly"
+                coords="150, 530, 144, 502, 142, 476, 141, 463, 138, 459, 131, 458, 132, 443, 138, 442,
+             169, 436, 209, 437, 225, 441, 229, 447, 229, 456, 224, 459, 222, 495, 220, 528, 202, 534, 186, 537, 165, 536"
+                alt="lata de lixo" id="lataDeLixo">
+        </map>
         <div class="lateral">
             <div class="historia">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ratione magnam laboriosam alias molestiae nulla ea
-                voluptatem facilis architecto quisquam, quod sed aperiam quos est officiis, obcaecati repudiandae temporibus
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ratione magnam laboriosam alias
+                molestiae nulla ea
+                voluptatem facilis architecto quisquam, quod sed aperiam quos est officiis, obcaecati repudiandae
+                temporibus
                 laudantium.
             </div>
             <div class="objetos">
-                <img class="objeto-imagem" src="/assets/primeira fase/potedesfocado.png" alt="pote">
-                <img class="objeto-imagem" src="/assets/primeira fase/pneudesfocado.png" alt="pneu">
-                <img class="objeto-imagem" src="/assets/primeira fase/caixadaguadesfocado.png" alt="caixa d'água">
-                <img class="objeto-imagem" src="/assets/primeira fase/baldecomaguadesfocado.png" alt="balde com água">
+                <img class="objeto-imagem" src="/assets/primeira-fase/pneu-desfocado.png" alt="pneu" id="imagemPneu">
+                <img class="objeto-imagem" src="/assets/primeira-fase/lata-de-lixo-desfocado.png" alt="lata de lixo" id="imagemLataDeLixo">
             </div>
         </div>
     </div>
 
     <div class="voltar">
         <a href="/index.html">
-            <button>Voltar</button>
+            <img src="/img/icone-voltar.png" alt="Voltar página inicial">
         </a>
     </div>
-    
+
     <audio id="audio" src="/audio/trilhaSonora.mp3"></audio>
     <img id="botaoReproduzir" src="/img/desativado.png" alt="Play">
     <div id="modal">
 
+    <div id="modalPneu" class="modal">
+        <div class="conteudoModal">
+            <span id="fecharModalPneu" class="fecharModal">&times;</span>
+            Modal pneu
+        </div>
+    </div>
+
+    <div id="modalLataDeLixo" class="modal">
+        <div class="conteudoModal">
+            <span id="fecharModalLataDeLixo" class="fecharModal">&times;</span>
+            Modal lata de lixo
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
