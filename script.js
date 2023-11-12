@@ -8,7 +8,7 @@ let localStorage = window.localStorage;
 
 window.onload = () => {
     if (localStorage.getItem("reproduzirMusica") == "true") {
-        audio.currentTime = localStorage.getItem("musicaTempoAtual") || 0;
+        audio.currentTime = localStorage.getItem("musicaTempoAtual");
         audio.play();
         botaoReproduzir.src = "img/ativado.png";
     }
@@ -36,6 +36,7 @@ botaoReproduzir.addEventListener("click", function () {
     if (audio.paused) {
         audio.play();
         botaoReproduzir.src = "img/ativado.png";
+        audio.currentTime = localStorage.getItem("musicaTempoAtual");
         localStorage.setItem("reproduzirMusica", "true")
         return;
     }
