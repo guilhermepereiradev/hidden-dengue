@@ -8,14 +8,14 @@ let localStorage = window.localStorage;
 
 window.onload = () => {
     if (localStorage.getItem("reproduzirMusica") == "true") {
-        audio.currentTime = localStorage.getItem("musicaTempoAtual");
         audio.play();
         botaoReproduzir.src = "img/ativado.png";
     }
+    audio.currentTime = localStorage.getItem("musicaTempoAtual");
 }
 
 window.onunload = () => {
-    audio.currentTime = localStorage.setItem("musicaTempoAtual", audio.currentTime);
+    localStorage.setItem("musicaTempoAtual", audio.currentTime);
 }
 
 botaoInstrucoes.addEventListener("click", () => {

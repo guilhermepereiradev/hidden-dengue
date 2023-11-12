@@ -8,12 +8,36 @@ const fecharModalPneu = document.getElementById("fecharModalPneu");
 const imagemLataDeLixo = document.getElementById("imagemLataDeLixo");
 const imagemPneu = document.getElementById("imagemPneu");
 
+
+let vidas = 3;
+let pontos = 0;
+
+let coracoes = document.getElementsByClassName("coracao");
+
+
+window.addEventListener("click", () => {
+    let erros = Math.max(0, 3 - vidas);
+
+    for (let i = 0; i < erros; i++) {
+        if(coracoes[i]) {
+            coracoes[i].src = "/img/coracao.png";
+        }
+    }
+})
+
+
+const imagemCenario = document.getElementById("imagem-cenario");
+
+imagemCenario.addEventListener("click", () => {
+    vidas--;
+})
+
 window.onload = () => {
     if (localStorage.getItem("reproduzirMusica") == "true") {
-        audio.currentTime = localStorage.getItem("musicaTempoAtual");
         audio.play();
         botaoReproduzir.src = "/img/ativado.png";
     }
+    audio.currentTime = localStorage.getItem("musicaTempoAtual");
 }
 
 window.onunload = () => {
