@@ -43,6 +43,10 @@ window.onload = () => {
         botaoReproduzir.src = "/img/ativado.png";
     }
     audio.currentTime = localStorage.getItem("musicaTempoAtual");
+
+    if (localStorage.getItem("passouPrimeiraFase") != "true") {
+        window.location.href = '/primeira-fase/index.html';
+    }
 }
 
 window.onunload = () => {
@@ -63,11 +67,9 @@ const abrirModal = (modal, imagem, novaImagem) => {
     pontos++;
 }
 
-const verificaQtdPontos = (qtdMinDePontos) => {
-    if (pontos >= qtdMinDePontos) {
+const verificaQtdPontos = (qtdMaxDePontos) => {
+    if (pontos >= qtdMaxDePontos) {
         modalGanhou.style.display = "block"
-
-        localStorage.setItem("passouPrimeiraFase", true);
 
         setTimeout(() => {
             modalGanhou.style.display = "none"
@@ -77,8 +79,8 @@ const verificaQtdPontos = (qtdMinDePontos) => {
     }
 }
 
-const verificaQtdVidas = (qtdMinDeVidas) => {
-    if (vidas <= qtdMinDeVidas) {
+const verificaQtdVidas = (qtdMinDePontos) => {
+    if (vidas <= qtdMinDePontos) {
         modalPerdeu.style.display = "block"
 
         setTimeout(() => {
