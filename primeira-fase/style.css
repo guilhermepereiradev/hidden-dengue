@@ -79,25 +79,33 @@ body {
     .lateral {
         margin: 1% 0.5% 0% 0.5%;
     }
+
     #imagem-cenario {
         margin: 0%;
+        border-radius: 0%;
     }
+
     .historia {
-        margin-top: -50px;
+        margin-top: -70px;
         max-width: 650px;
         padding: 30px;
     }
+
     .objeto-imagem {
-        max-height: 95px;
+        margin-top: -30px;
+        max-height: 200px;
     }
+
     .voltar {
         position: absolute;
-        left: 47%;
+        left: 46%;
         bottom: -2%;
     }
+
     #botaoReproduzir {
         bottom: -2%;
     }
+
     .conteudoModal {
         font-size: 1.8rem;
         margin: 5% auto;
