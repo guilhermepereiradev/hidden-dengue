@@ -74,3 +74,36 @@ body {
     height: 50px;
     cursor: pointer;
 }
+
+@media (max-width: 1400px) {
+    .lateral {
+        margin: 1% 0.5% 0% 0.5%;
+    }
+    #imagem-cenario {
+        margin: 0%;
+    }
+    .historia {
+        margin-top: -50px;
+        max-width: 650px;
+        padding: 30px;
+    }
+    .objeto-imagem {
+        max-height: 95px;
+    }
+    .voltar {
+        position: absolute;
+        left: 47%;
+        bottom: -2%;
+    }
+    #botaoReproduzir {
+        bottom: -2%;
+    }
+    .conteudoModal {
+        font-size: 1.8rem;
+        margin: 5% auto;
+    }
+
+    body {
+        overflow: hidden;
+    }
+}
