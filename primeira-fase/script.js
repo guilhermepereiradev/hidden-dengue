@@ -113,14 +113,14 @@ const verificaQtdVidas = (qtdMinDeVidas) => {
     }
 }
 
-function verificaJaClicouObjeto(clicou) {
+const verificaJaClicouObjeto = (clicou) => {
     if (!clicou) {
         pontos++;
         return true;
     }
 
     return clicou;
-}
+};
 
 botaoReproduzir.addEventListener("click", function () {
     if (audio.paused) {
