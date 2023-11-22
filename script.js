@@ -1,10 +1,11 @@
 const botaoInstrucoes = document.getElementById("botaoInstrucoes");
+const botaoJogar = document.getElementById("botaoJogar");
 const modalPrincipal = document.getElementById("modalPrincipal");
 const fecharModal = document.getElementById("fecharModal");
 const audio = document.getElementById("audio");
 const botaoReproduzir = document.getElementById("botaoReproduzir");
 
-let localStorage = window.localStorage;
+const localStorage = window.localStorage;
 
 window.onload = () => {
     if (localStorage.getItem("reproduzirMusica") == "true") {
@@ -17,6 +18,14 @@ window.onload = () => {
 window.onunload = () => {
     localStorage.setItem("musicaTempoAtual", audio.currentTime);
 }
+
+botaoJogar.addEventListener("click", () => {
+    if (!localStorage.getItem("faseAtual")) {
+        localStorage.setItem("faseAtual", "primeira-fase")
+    }
+
+    window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+});
 
 botaoInstrucoes.addEventListener("click", () => {
     modalPrincipal.style.display = "block";

@@ -17,8 +17,10 @@ const imagemCenario = document.getElementById("imagem-cenario");
 
 const coracoes = document.getElementsByClassName("coracao");
 
-let vidas = 3;
-let pontos = 0;
+const localStorage = window.localStorage;
+
+let vidas = !localStorage.getItem("vidas") ? 3 : localStorage.getItem("vidas");
+let pontos = !localStorage.getItem("pontos") ? 0 : localStorage.getItem("vidas");
 
 let clicouPneu = false;
 let clicouLataDeLixo = false;
@@ -96,7 +98,8 @@ const verificaQtdPontos = (qtdMinDePontos) => {
 
         setTimeout(() => {
             modalGanhou.style.display = "none"
-            // window.location.href = '/segunda-fase/index.html';
+            localStorage.setItem("faseAtual", "segunda-fase")
+            window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
         }, 5000)
 
     }
@@ -108,7 +111,8 @@ const verificaQtdVidas = (qtdMinDeVidas) => {
 
         setTimeout(() => {
             modalGanhou.style.display = "none"
-            window.location.reload();
+            localStorage.setItem("faseAtual", "primeira-fase")
+            window.location.href = "/index.html";
         }, 5000)
     }
 }
