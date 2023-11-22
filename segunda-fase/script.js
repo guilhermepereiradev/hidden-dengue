@@ -1,7 +1,9 @@
 const lataDeLixo = document.getElementById("lataDeLixo");
 const pneu = document.getElementById("pneu");
+
 const modalLataDeLixo = document.getElementById("modalLataDeLixo");
 const modalPneu = document.getElementById("modalPneu");
+
 const fecharModalLataDeLixo = document.getElementById("fecharModalLataDeLixo");
 const fecharModalPneu = document.getElementById("fecharModalPneu");
 
@@ -11,84 +13,42 @@ const imagemPneu = document.getElementById("imagemPneu");
 const modalGanhou = document.getElementById("modalGanhou");
 const modalPerdeu = document.getElementById("modalPerdeu");
 
-
-let vidas = 3;
-let pontos = 0;
-
-let coracoes = document.getElementsByClassName("coracao");
-
-
-window.addEventListener("click", () => {
-    let erros = Math.max(0, 3 - vidas);
-
-    for (let i = 0; i < erros; i++) {
-        if(coracoes[i]) {
-            coracoes[i].src = "/img/coracao.png";
-        }
-    }
-})
-
-
 const imagemCenario = document.getElementById("imagem-cenario");
 
-imagemCenario.addEventListener("click", () => {
-    vidas--;
+const coracoes = document.getElementsByClassName("coracao");
 
-    verificaQtdVidas(0);
-})
+const localStorage = window.localStorage;
+
+let vidas = !localStorage.getItem("vidas") ? 3 : localStorage.getItem("vidas");
+let pontos = !localStorage.getItem("pontos") ? 0 : localStorage.getItem("pontos");
+
+let clicouPneu = false;
+let clicouLataDeLixo = false;
 
 window.onload = () => {
+    
+    if (localStorage.getItem("faseAtual") != "segunda-fase") {
+        window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+    }
+
+    confereCoracoesPreenchidos();
+
     if (localStorage.getItem("reproduzirMusica") == "true") {
         audio.play();
         botaoReproduzir.src = "/img/ativado.png";
     }
     audio.currentTime = localStorage.getItem("musicaTempoAtual");
-
-    if (localStorage.getItem("passouPrimeiraFase") != "true") {
-        window.location.href = '/primeira-fase/index.html';
-    }
-}
-
-window.onunload = () => {
-    audio.currentTime = localStorage.setItem("musicaTempoAtual", audio.currentTime);
 }
 
 lataDeLixo.addEventListener("click", () => {
-    abrirModal(modalLataDeLixo, imagemLataDeLixo, "lata-de-lixo.png")
+    abrirModal(modalLataDeLixo, imagemLataDeLixo, "lata-de-lixo.png");
+    clicouLataDeLixo = verificaJaClicouObjeto(clicouLataDeLixo);
 });
 
 pneu.addEventListener("click", () => {
     abrirModal(modalPneu, imagemPneu, "pneu.png")
-})
-
-const abrirModal = (modal, imagem, novaImagem) => {
-    modal.style.display = "block";
-    imagem.src = `/assets/primeira-fase/${novaImagem}`;
-    pontos++;
-}
-
-const verificaQtdPontos = (qtdMaxDePontos) => {
-    if (pontos >= qtdMaxDePontos) {
-        modalGanhou.style.display = "block"
-
-        setTimeout(() => {
-            modalGanhou.style.display = "none"
-            window.location.href = '/segunda-fase/index.html';
-        }, 5000)
-
-    }
-}
-
-const verificaQtdVidas = (qtdMinDePontos) => {
-    if (vidas <= qtdMinDePontos) {
-        modalPerdeu.style.display = "block"
-
-        setTimeout(() => {
-            modalGanhou.style.display = "none"
-            window.location.reload();
-        }, 5000)
-    }
-}
+    clicouPneu = verificaJaClicouObjeto(clicouPneu);
+});
 
 fecharModalPneu.addEventListener("click", () => {
     fecharModal(modalPneu);
@@ -98,9 +58,33 @@ fecharModalLataDeLixo.addEventListener("click", () => {
     fecharModal(modalLataDeLixo);
 });
 
+imagemCenario.addEventListener("click", () => {
+    audioErro.play();
+    localStorage.setItem("vidas", --vidas);
+    verificaQtdVidas(0);
+})
+
+window.addEventListener("click", () => {
+    confereCoracoesPreenchidos();
+})
+
+const confereCoracoesPreenchidos = () => {
+    let erros = Math.max(0, 3 - vidas);
+
+    for (let i = 0; i < erros; i++) {
+        if(coracoes[i]) {
+            coracoes[i].src = "/img/coracao.png";
+        }
+    }
+}
+
+const abrirModal = (modal, imagem, novaImagem) => {
+    modal.style.display = "block";
+    imagem.src = `/assets/primeira-fase/${novaImagem}`;
+}
+
 const fecharModal = (modal) => {
     modal.style.display = "none";
-
     verificaQtdPontos(2);
 }
 
@@ -113,6 +97,44 @@ window.addEventListener('click', (event) => {
         fecharModal(modalPneu);
     }
 });
+
+const verificaQtdPontos = (qtdMinDePontos) => {
+    if (pontos >= qtdMinDePontos) {
+        modalGanhou.style.display = "block"
+
+        setTimeout(() => {
+            modalGanhou.style.display = "none"
+            localStorage.setItem("faseAtual", "segunda-fase")
+            localStorage.setItem("vidas", 3)
+            localStorage.setItem("pontos", 0)
+            window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+        }, 5000)
+
+    }
+}
+
+const verificaQtdVidas = (qtdMinDeVidas) => {
+    if (vidas <= qtdMinDeVidas) {
+        modalPerdeu.style.display = "block"
+
+        setTimeout(() => {
+            modalGanhou.style.display = "none";
+            localStorage.setItem("faseAtual", "primeira-fase");
+            localStorage.setItem("vidas", 3)
+            localStorage.setItem("pontos", 0)
+            window.location.href = "/index.html";
+        }, 5000)
+    }
+}
+
+const verificaJaClicouObjeto = (clicou) => {
+    if (!clicou) {
+        localStorage.setItem("pontos", ++pontos);
+        return true;
+    }
+
+    return clicou;
+};
 
 botaoReproduzir.addEventListener("click", function () {
     if (audio.paused) {

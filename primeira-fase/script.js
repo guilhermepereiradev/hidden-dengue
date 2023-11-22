@@ -20,12 +20,15 @@ const coracoes = document.getElementsByClassName("coracao");
 const localStorage = window.localStorage;
 
 let vidas = !localStorage.getItem("vidas") ? 3 : localStorage.getItem("vidas");
-let pontos = !localStorage.getItem("pontos") ? 0 : localStorage.getItem("vidas");
+let pontos = !localStorage.getItem("pontos") ? 0 : localStorage.getItem("pontos");
 
 let clicouPneu = false;
 let clicouLataDeLixo = false;
 
 window.onload = () => {
+    
+    confereCoracoesPreenchidos();
+
     if (localStorage.getItem("reproduzirMusica") == "true") {
         audio.play();
         botaoReproduzir.src = "/img/ativado.png";
@@ -56,11 +59,16 @@ fecharModalLataDeLixo.addEventListener("click", () => {
 });
 
 imagemCenario.addEventListener("click", () => {
-    vidas--;
+    audioErro.play();
+    localStorage.setItem("vidas", --vidas);
     verificaQtdVidas(0);
 })
 
 window.addEventListener("click", () => {
+    confereCoracoesPreenchidos();
+})
+
+const confereCoracoesPreenchidos = () => {
     let erros = Math.max(0, 3 - vidas);
 
     for (let i = 0; i < erros; i++) {
@@ -68,7 +76,7 @@ window.addEventListener("click", () => {
             coracoes[i].src = "/img/coracao.png";
         }
     }
-})
+}
 
 const abrirModal = (modal, imagem, novaImagem) => {
     modal.style.display = "block";
@@ -94,11 +102,11 @@ const verificaQtdPontos = (qtdMinDePontos) => {
     if (pontos >= qtdMinDePontos) {
         modalGanhou.style.display = "block"
 
-        localStorage.setItem("passouPrimeiraFase", true);
-
         setTimeout(() => {
             modalGanhou.style.display = "none"
             localStorage.setItem("faseAtual", "segunda-fase")
+            localStorage.setItem("vidas", 3)
+            localStorage.setItem("pontos", 0)
             window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
         }, 5000)
 
@@ -110,8 +118,10 @@ const verificaQtdVidas = (qtdMinDeVidas) => {
         modalPerdeu.style.display = "block"
 
         setTimeout(() => {
-            modalGanhou.style.display = "none"
-            localStorage.setItem("faseAtual", "primeira-fase")
+            modalGanhou.style.display = "none";
+            localStorage.setItem("faseAtual", "primeira-fase");
+            localStorage.setItem("vidas", 3)
+            localStorage.setItem("pontos", 0)
             window.location.href = "/index.html";
         }, 5000)
     }
@@ -119,7 +129,7 @@ const verificaQtdVidas = (qtdMinDeVidas) => {
 
 const verificaJaClicouObjeto = (clicou) => {
     if (!clicou) {
-        pontos++;
+        localStorage.setItem("pontos", ++pontos);
         return true;
     }
 
