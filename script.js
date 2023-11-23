@@ -10,6 +10,7 @@ const botaoNovoJogo = document.getElementById("botaoNovoJogo");
 const localStorage = window.localStorage;
 
 window.onload = () => {
+    localStorage.setItem("pontos", 0);
     if (localStorage.getItem("reproduzirMusica") == "true") {
         audio.play();
         botaoReproduzir.src = "img/ativado.png";
