@@ -11,16 +11,16 @@
 
 <body>
     <div class="content">
-        <img id="imagem-cenario" src="/assets/primeira-fase/cenario-primeira-fase.jpeg" alt="Cenário"
-            usemap="#objetos">
+        <img id="imagem-cenario" src="/assets/segunda-fase/cenario-segunda-fase.jpg" alt="Cenário" usemap="#objetos">
         <map name="objetos">
-            <area shape="poly" coords="291, 473, 315, 475, 342, 473, 364, 477, 379, 486, 387, 499, 389, 514, 390, 527,
-             385, 540, 370, 553, 346, 560, 319, 572, 291, 554, 280, 550, 272, 540, 271, 521, 275, 500" alt="pneu"
-                id="pneu">
             <area shape="poly"
-                coords="150, 530, 144, 502, 142, 476, 141, 463, 138, 459, 131, 458, 132, 443, 138, 442,
-             169, 436, 209, 437, 225, 441, 229, 447, 229, 456, 224, 459, 222, 495, 220, 528, 202, 534, 186, 537, 165, 536"
-                alt="lata de lixo" id="lataDeLixo">
+                coords="3, 479, 0, 471, 0, 451, 3, 442, 12, 433, 22, 426, 38, 424, 47, 425, 55, 429, 60, 434, 64, 439, 66, 445, 66, 481, 60, 490, 54, 494, 31, 497, 18, 488"
+                alt="pneu" id="pneu">
+            <area shape="poly" coords="543, 394, 533, 394, 530, 391, 530, 376, 533, 370, 545, 371, 550, 377, 549, 391"
+                alt="garrafas" id="garrafas">
+            <area shape="poly"
+                coords="251, 377, 244, 379, 238, 377, 234, 366, 232, 362, 231, 360, 255, 355, 229, 347, 234, 339, 244, 334, 256, 340, 257, 344, 263, 353, 258, 359, 257, 363, 255, 365, 251, 377"
+                alt="vaso" id="vaso">
         </map>
         <div class="lateral">
             <div class="vidas">
@@ -32,13 +32,18 @@
                 <p>Vidas</p>
             </div>
             <div class="historia">
-                Em uma noite nublada, uma chuva forte caiu na cidade do Vale Verde, no dia seguinte algo não estava certo, a água havia se acumulado em recipientes
-                esquecidos próximo à garagem de Geraldo em seu quintal, e adivinha quem apareceu? Os mosquitos da dengue! Por causa da água parada, esses recipientes 
-                tornaram-se lugares perfeitos para a proliferação do mosquito, encontre esses objetos para ajudar o Geraldo a resolver esse problema.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores consequatur omnis perferendis ullam
+                sequi, quae, reprehenderit necessitatibus excepturi
+                nostrum ipsa dolorum. Dolores, quidem. Esse, corporis? Ea fugit rem eius blanditiis? Lorem ipsum dolor
+                sit amet consectetur adipisicing elit. Cupiditate fuga
+                cumque unde ab voluptatibus culpa vero ipsum excepturi magni nemo nam earum ad aspernatur tenetur
+                impedit totam, repellendus iure rem!
             </div>
             <div class="objetos">
-                <img class="objeto-imagem" src="/assets/primeira-fase/pneu-desfocado.png" alt="pneu" id="imagemPneu">
-                <img class="objeto-imagem" src="/assets/primeira-fase/lata-de-lixo-desfocado.png" alt="lata de lixo" id="imagemLataDeLixo">
+                <img class="objeto-imagem" src="/assets/segunda-fase/pneu.png" alt="pneu" id="imagemPneu">
+                <img class="objeto-imagem" src="/assets/segunda-fase/garrafas.png" alt="garras vazias"
+                    id="imagemGarrafas">
+                <img class="objeto-imagem" src="/assets/segunda-fase/vaso.png" alt="vaso de planta" id="imagemVaso">
             </div>
         </div>
     </div>
@@ -53,32 +58,51 @@
     <audio id="audio" src="/audio/trilhaSonora.mp3" loop></audio>
     <img id="botaoReproduzir" src="/img/desativado.png" alt="Play">
 
+
     <div id="modalPneu" class="modal">
         <div class="conteudoModal">
             <span id="fecharModalPneu" class="fecharModal">&times;</span>
-            Parabéns você encontrou o pneu! Se você identificar um pneu com água parada, é importante tomar medidas para impedir a proliferação desses mosquitos, como
-            esvaziar o pneu e guardá-lo em um local coberto ou virá-lo de cabeça para baixo, evitando o acúmulo de água. Se o pneu não estiver mais em condições de uso,
-            descartá-lo adequadamente, preferencialmente por meio de reciclagem. Essas ações contribuem para manter o ambiente limpo e seguro.
+            Pneu - Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores doloremque tenetur culpa error,
+            sunt excepturi architecto, quod dolore eius consectetur
+            beatae officia nam fugit. Itaque aliquam maiores eaque alias eius? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Enim dicta ducimus ea cum aspernatur
+            aperiam, atque ab blanditiis consequuntur? Blanditiis magni repellendus ipsam autem ab nesciunt eligendi.
+            Autem, dolores voluptate.
         </div>
     </div>
 
-    <div id="modalLataDeLixo" class="modal">
+    <div id="modalGarrafas" class="modal">
         <div class="conteudoModal">
-            <span id="fecharModalLataDeLixo" class="fecharModal">&times;</span>
-            Parabéns você encontrou a lata de lixo! Se você encontrar uma lata de lixo com água parada, é importante tomar medidas imediatas para impedir a proliferação
-            do mosquito da dengue, como esvaziar toda a água acumulada e tampar a lata adequadamente, evitando que a água se acumule novamente. Essas ações simples contribuem
+            <span id="fecharModalGarrafas" class="fecharModal">&times;</span>
+            Garrafas - Parabéns você encontrou a lata de lixo! Se você encontrar uma lata de lixo com água parada, é
+            importante tomar medidas imediatas para impedir a proliferação
+            do mosquito da dengue, como esvaziar toda a água acumulada e tampar a lata adequadamente, evitando que a
+            água se acumule novamente. Essas ações simples contribuem
+            para manter nosso ambiente seguro e livre de mosquitos transmissores de doenças
+        </div>
+    </div>
+
+    <div id="modalVaso" class="modal">
+        <div class="conteudoModal">
+            <span id="fecharModalVaso" class="fecharModal">&times;</span>
+            Vaso Parabéns você encontrou a lata de lixo! Se você encontrar uma lata de lixo com água parada, é
+            importante tomar medidas imediatas para impedir a proliferação
+            do mosquito da dengue, como esvaziar toda a água acumulada e tampar a lata adequadamente, evitando que a
+            água se acumule novamente. Essas ações simples contribuem
             para manter nosso ambiente seguro e livre de mosquitos transmissores de doenças
         </div>
     </div>
 
     <div id="modalPerdeu" class="modal">
         <div class="conteudoModal">
+            <span id="fecharModalPerdeu" class="fecharModal">&times;</span>
             Infelizmente você não encontrou todos os objetos dessa fase, mas não se preocupe, você pode tentar de novo.
         </div>
     </div>
 
     <div id="modalGanhou" class="modal">
         <div class="conteudoModal">
+            <span id="fecharModalGanhou" class="fecharModal">&times;</span>
             Parabéns você encontrou todos os objetos dessa fase, vamos para o proximo desafio;
         </div>
     </div>

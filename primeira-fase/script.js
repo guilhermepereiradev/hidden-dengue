@@ -23,7 +23,7 @@ const coracoes = document.getElementsByClassName("coracao");
 const localStorage = window.localStorage;
 
 let vidas = !localStorage.getItem("vidas") ? 3 : localStorage.getItem("vidas");
-let pontos = !localStorage.getItem("pontos") ? 0 : localStorage.getItem("pontos");
+let pontos = 0;
 
 let clicouPneu = false;
 let clicouLataDeLixo = false;
@@ -113,10 +113,10 @@ window.addEventListener('click', (event) => {
 
 const verificaQtdPontos = (qtdMinDePontos) => {
     if (pontos >= qtdMinDePontos) {
-        modalGanhou.style.display = "block"
+        modalGanhou.style.display = "block";
 
         setTimeout(() => {
-            modalGanhou.style.display = "none"
+            modalGanhou.style.display = "none";
             encaminharProximaFase("segunda-fase");
         }, 5000)
 
@@ -136,7 +136,7 @@ const verificaQtdVidas = (qtdMinDeVidas) => {
 
 const verificaJaClicouObjeto = (clicou) => {
     if (!clicou) {
-        localStorage.setItem("pontos", ++pontos);
+        pontos++;
         return true;
     }
 
@@ -146,14 +146,12 @@ const verificaJaClicouObjeto = (clicou) => {
 const encaminharProximaFase = (proximaFase) => {
     localStorage.setItem("faseAtual", proximaFase);
     localStorage.setItem("vidas", 3);
-    localStorage.setItem("pontos", 0);
     window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
 }
 
 const encaminharParaInicio = () => {
     localStorage.setItem("faseAtual", "primeira-fase");
     localStorage.setItem("vidas", 3)
-    localStorage.setItem("pontos", 0)
     window.location.href = "/index.html";
 }
 

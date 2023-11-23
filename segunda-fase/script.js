@@ -1,17 +1,24 @@
-const lataDeLixo = document.getElementById("lataDeLixo");
 const pneu = document.getElementById("pneu");
+const garrafas = document.getElementById("garrafas");
+const vaso = document.getElementById("vaso");
 
-const modalLataDeLixo = document.getElementById("modalLataDeLixo");
 const modalPneu = document.getElementById("modalPneu");
+const modalGarrafas = document.getElementById("modalGarrafas");
+const modalVaso = document.getElementById("modalVaso");
 
-const fecharModalLataDeLixo = document.getElementById("fecharModalLataDeLixo");
 const fecharModalPneu = document.getElementById("fecharModalPneu");
-
-const imagemLataDeLixo = document.getElementById("imagemLataDeLixo");
-const imagemPneu = document.getElementById("imagemPneu");
+const fecharModalGarrafas = document.getElementById("fecharModalGarrafas");
+const fecharModalVaso = document.getElementById("fecharModalVaso");
 
 const modalGanhou = document.getElementById("modalGanhou");
 const modalPerdeu = document.getElementById("modalPerdeu");
+
+const fecharModalGanhou = document.getElementById("fecharModalGanhou");
+const fecharModalPerdeu = document.getElementById("fecharModalPerdeu");
+
+const imagemPneu = document.getElementById("imagemPneu");
+const imagemGarrafas = document.getElementById("imagemGarrafas");
+const imagemVaso = document.getElementById("imagemVaso");
 
 const imagemCenario = document.getElementById("imagem-cenario");
 
@@ -20,17 +27,18 @@ const coracoes = document.getElementsByClassName("coracao");
 const localStorage = window.localStorage;
 
 let vidas = !localStorage.getItem("vidas") ? 3 : localStorage.getItem("vidas");
-let pontos = !localStorage.getItem("pontos") ? 0 : localStorage.getItem("pontos");
+let pontos = 0;
 
 let clicouPneu = false;
-let clicouLataDeLixo = false;
+let clicouGarrafas = false;
+let clicouVaso = false;
 
 window.onload = () => {
-    
+
     if (localStorage.getItem("faseAtual") != "segunda-fase") {
         window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
-    }
-
+    }    
+    
     confereCoracoesPreenchidos();
 
     if (localStorage.getItem("reproduzirMusica") == "true") {
@@ -40,22 +48,45 @@ window.onload = () => {
     audio.currentTime = localStorage.getItem("musicaTempoAtual");
 }
 
-lataDeLixo.addEventListener("click", () => {
-    abrirModal(modalLataDeLixo, imagemLataDeLixo, "lata-de-lixo.png");
-    clicouLataDeLixo = verificaJaClicouObjeto(clicouLataDeLixo);
-});
+window.onunload = () => {
+    audio.currentTime = localStorage.setItem("musicaTempoAtual", audio.currentTime);
+}
 
 pneu.addEventListener("click", () => {
-    abrirModal(modalPneu, imagemPneu, "pneu.png")
+    abrirModal(modalPneu, imagemPneu, "pneu.png");
     clicouPneu = verificaJaClicouObjeto(clicouPneu);
+});
+
+garrafas.addEventListener("click", () => {
+    abrirModal(modalGarrafas, imagemGarrafas, "garrafas.png")
+    clicouGarrafas = verificaJaClicouObjeto(clicouGarrafas);
+});
+
+vaso.addEventListener("click", () => {
+    abrirModal(modalVaso, imagemVaso, "vaso.png")
+    clicouVaso = verificaJaClicouObjeto(clicouVaso);
 });
 
 fecharModalPneu.addEventListener("click", () => {
     fecharModal(modalPneu);
 });
 
-fecharModalLataDeLixo.addEventListener("click", () => {
-    fecharModal(modalLataDeLixo);
+fecharModalGarrafas.addEventListener("click", () => {
+    fecharModal(modalGarrafas);
+});
+
+fecharModalVaso.addEventListener("click", () => {
+    fecharModal(modalVaso);
+});
+
+fecharModalGanhou.addEventListener("click", () => {
+    fecharModal(modalGanhou);
+    encaminharProximaFase("segunda-fase");
+});
+
+fecharModalPerdeu.addEventListener("click", () => {
+    fecharModal(fecharModalPerdeu);
+    encaminharParaInicio();
 });
 
 imagemCenario.addEventListener("click", () => {
@@ -85,29 +116,33 @@ const abrirModal = (modal, imagem, novaImagem) => {
 
 const fecharModal = (modal) => {
     modal.style.display = "none";
-    verificaQtdPontos(2);
+    verificaQtdPontos(3);
 }
 
 window.addEventListener('click', (event) => {
-    if (event.target == modalLataDeLixo) {
-        fecharModal(modalLataDeLixo);
-    }
-
     if (event.target == modalPneu) {
         fecharModal(modalPneu);
+    }
+
+    if (event.target == modalGarrafas) {
+        fecharModal(modalGarrafas);
+    }
+
+    if (event.target == modalVaso) {
+        fecharModal(modalVaso);
     }
 });
 
 const verificaQtdPontos = (qtdMinDePontos) => {
+    console.log(pontos);
     if (pontos >= qtdMinDePontos) {
         modalGanhou.style.display = "block"
 
+        console.log("teste1");
+
         setTimeout(() => {
             modalGanhou.style.display = "none"
-            localStorage.setItem("faseAtual", "segunda-fase")
-            localStorage.setItem("vidas", 3)
-            localStorage.setItem("pontos", 0)
-            window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+            encaminharProximaFase("terceira-fase");
         }, 5000)
 
     }
@@ -119,22 +154,31 @@ const verificaQtdVidas = (qtdMinDeVidas) => {
 
         setTimeout(() => {
             modalGanhou.style.display = "none";
-            localStorage.setItem("faseAtual", "primeira-fase");
-            localStorage.setItem("vidas", 3)
-            localStorage.setItem("pontos", 0)
-            window.location.href = "/index.html";
+            encaminharParaInicio();
         }, 5000)
     }
 }
 
 const verificaJaClicouObjeto = (clicou) => {
     if (!clicou) {
-        localStorage.setItem("pontos", ++pontos);
+        pontos++;
         return true;
     }
 
     return clicou;
 };
+
+const encaminharProximaFase = (proximaFase) => {
+    localStorage.setItem("faseAtual", proximaFase);
+    localStorage.setItem("vidas", 3);
+    window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+}
+
+const encaminharParaInicio = () => {
+    localStorage.setItem("faseAtual", "primeira-fase");
+    localStorage.setItem("vidas", 3);
+    window.location.href = "/index.html";
+}
 
 botaoReproduzir.addEventListener("click", function () {
     if (audio.paused) {
