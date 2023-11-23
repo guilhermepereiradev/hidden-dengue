@@ -112,3 +112,9 @@ button:hover {
     height: 50px;
     cursor: pointer;
 }
+
+@media (max-height: 650px) {
+   .botoes {
+    margin-top: 5%;
+   }
+}

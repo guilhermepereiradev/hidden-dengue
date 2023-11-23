@@ -7,6 +7,9 @@ const modalPneu = document.getElementById("modalPneu");
 const fecharModalLataDeLixo = document.getElementById("fecharModalLataDeLixo");
 const fecharModalPneu = document.getElementById("fecharModalPneu");
 
+const fecharModalGanhou = document.getElementById("fecharModalGanhou");
+const fecharModalPerdeu = document.getElementById("fecharModalPerdeu");
+
 const imagemLataDeLixo = document.getElementById("imagemLataDeLixo");
 const imagemPneu = document.getElementById("imagemPneu");
 
@@ -47,7 +50,7 @@ lataDeLixo.addEventListener("click", () => {
 
 pneu.addEventListener("click", () => {
     abrirModal(modalPneu, imagemPneu, "pneu.png")
-    clicouPneu = verificaJaClicouObjeto(clicouPneu);
+    verificaJaClicouObjeto(clicouPneu);
 });
 
 fecharModalPneu.addEventListener("click", () => {
@@ -56,6 +59,16 @@ fecharModalPneu.addEventListener("click", () => {
 
 fecharModalLataDeLixo.addEventListener("click", () => {
     fecharModal(modalLataDeLixo);
+});
+
+fecharModalGanhou.addEventListener("click", () => {
+    fecharModal(modalGanhou);
+    encaminharProximaFase("segunda-fase");
+});
+
+fecharModalPerdeu.addEventListener("click", () => {
+    fecharModal(fecharModalPerdeu);
+    encaminharParaInicio();
 });
 
 imagemCenario.addEventListener("click", () => {
@@ -104,10 +117,7 @@ const verificaQtdPontos = (qtdMinDePontos) => {
 
         setTimeout(() => {
             modalGanhou.style.display = "none"
-            localStorage.setItem("faseAtual", "segunda-fase")
-            localStorage.setItem("vidas", 3)
-            localStorage.setItem("pontos", 0)
-            window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+            encaminharProximaFase("segunda-fase");
         }, 5000)
 
     }
@@ -119,10 +129,7 @@ const verificaQtdVidas = (qtdMinDeVidas) => {
 
         setTimeout(() => {
             modalGanhou.style.display = "none";
-            localStorage.setItem("faseAtual", "primeira-fase");
-            localStorage.setItem("vidas", 3)
-            localStorage.setItem("pontos", 0)
-            window.location.href = "/index.html";
+            encaminharParaInicio();
         }, 5000)
     }
 }
@@ -135,6 +142,20 @@ const verificaJaClicouObjeto = (clicou) => {
 
     return clicou;
 };
+
+const encaminharProximaFase = (proximaFase) => {
+    localStorage.setItem("faseAtual", proximaFase);
+    localStorage.setItem("vidas", 3);
+    localStorage.setItem("pontos", 0);
+    window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+}
+
+const encaminharParaInicio = () => {
+    localStorage.setItem("faseAtual", "primeira-fase");
+    localStorage.setItem("vidas", 3)
+    localStorage.setItem("pontos", 0)
+    window.location.href = "/index.html";
+}
 
 botaoReproduzir.addEventListener("click", function () {
     if (audio.paused) {

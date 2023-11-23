@@ -5,6 +5,8 @@ const fecharModal = document.getElementById("fecharModal");
 const audio = document.getElementById("audio");
 const botaoReproduzir = document.getElementById("botaoReproduzir");
 
+const botaoNovoJogo = document.getElementById("botaoNovoJogo");
+
 const localStorage = window.localStorage;
 
 window.onload = () => {
@@ -22,6 +24,20 @@ window.onunload = () => {
 botaoJogar.addEventListener("click", () => {
     if (!localStorage.getItem("faseAtual")) {
         localStorage.setItem("faseAtual", "primeira-fase")
+    }
+
+    window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+});
+
+botaoNovoJogo.addEventListener("click", () => {
+    localStorage.setItem("faseAtual", "primeira-fase");
+
+    if(localStorage.getItem("vidas")) {
+        localStorage.setItem("vidas", 3)
+    }
+
+    if(localStorage.getItem("pontos")) {
+        localStorage.setItem("pontos", 0)
     }
 
     window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
