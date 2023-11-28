@@ -1,14 +1,17 @@
-const objeto1 = document.getElementById("objeto1"); //Objeto1: pneu
-const objeto2 = document.getElementById("objeto2"); //Objeto2: garrafas
-const objeto3 = document.getElementById("objeto3"); //Objeto3: vaso de planta
+const objeto1 = document.getElementById("objeto1"); //Objeto1: barril
+const objeto2 = document.getElementById("objeto2"); //Objeto2: lata de lixo
+const objeto3 = document.getElementById("objeto3"); //Objeto3: pneu
+const objeto4 = document.getElementById("objeto4"); //Objeto4: vaso
 
 const modalObjeto1 = document.getElementById("modalObjeto1");
 const modalObjeto2 = document.getElementById("modalObjeto2");
 const modalObjeto3 = document.getElementById("modalObjeto3");
+const modalObjeto4 = document.getElementById("modalObjeto4");
 
 const fecharModalObjeto1 = document.getElementById("fecharModalObjeto1");
 const fecharModalObjeto2 = document.getElementById("fecharModalObjeto2");
 const fecharModalObjeto3 = document.getElementById("fecharModalObjeto3");
+const fecharModalObjeto4 = document.getElementById("fecharModalObjeto4");
 
 const fecharModalGanhou = document.getElementById("fecharModalGanhou");
 const fecharModalPerdeu = document.getElementById("fecharModalPerdeu");
@@ -16,6 +19,7 @@ const fecharModalPerdeu = document.getElementById("fecharModalPerdeu");
 const imagemObjeto1 = document.getElementById("imagemObjeto1");
 const imagemObjeto2 = document.getElementById("imagemObjeto2");
 const imagemObjeto3 = document.getElementById("imagemObjeto3");
+const imagemObjeto4 = document.getElementById("imagemObjeto4");
 
 const modalGanhou = document.getElementById("modalGanhou");
 const modalPerdeu = document.getElementById("modalPerdeu");
@@ -32,6 +36,7 @@ let pontos = 0;
 let clicouObjeto1 = false;
 let clicouObjeto2 = false;
 let clicouObjeto3 = false;
+let clicouObjeto4 = false;
 
 window.onload = () => {
     
@@ -49,18 +54,23 @@ window.onunload = () => {
 }
 
 objeto1.addEventListener("click", () => {
-    abrirModal(modalObjeto1, imagemObjeto1, "pneu-f2.png");
+    abrirModal(modalObjeto1, imagemObjeto1, "barril-f3.png");
     clicouObjeto1 = verificaJaClicouObjeto(clicouObjeto1);
 });
 
 objeto2.addEventListener("click", () => {
-    abrirModal(modalObjeto2, imagemObjeto2, "garrafas-f2.png")
+    abrirModal(modalObjeto2, imagemObjeto2, "lata-de-lixo-f3.png")
     verificaJaClicouObjeto(clicouObjeto2);
 });
 
 objeto3.addEventListener("click", () => {
-    abrirModal(modalObjeto3, imagemObjeto3, "vaso-f2.png")
+    abrirModal(modalObjeto3, imagemObjeto3, "pneu-f3.png")
     verificaJaClicouObjeto(clicouObjeto3);
+});
+
+objeto4.addEventListener("click", () => {
+    abrirModal(modalObjeto4, imagemObjeto4, "vaso-f3.png")
+    verificaJaClicouObjeto(clicouObjeto4);
 });
 
 fecharModalObjeto1.addEventListener("click", () => {
@@ -75,9 +85,14 @@ fecharModalObjeto3.addEventListener("click", () => {
     fecharModal(modalObjeto3);
 });
 
+fecharModalObjeto4.addEventListener("click", () => {
+    fecharModal(modalObjeto4);
+});
+
+
 fecharModalGanhou.addEventListener("click", () => {
     fecharModal(modalGanhou);
-    encaminharProximaFase("terceira-fase");
+    encaminharProximaFase("quarta-fase");
 });
 
 fecharModalPerdeu.addEventListener("click", () => {
@@ -107,12 +122,12 @@ const confereCoracoesPreenchidos = () => {
 
 const abrirModal = (modal, imagem, novaImagem) => {
     modal.style.display = "block";
-    imagem.src = `/assets/segunda-fase/${novaImagem}`;
+    imagem.src = `/assets/terceira-fase/${novaImagem}`;
 }
 
 const fecharModal = (modal) => {
     modal.style.display = "none";
-    verificaQtdPontos(3);
+    verificaQtdPontos(4);
 }
 
 window.addEventListener('click', (event) => {
@@ -127,6 +142,10 @@ window.addEventListener('click', (event) => {
     if (event.target == modalObjeto3) {
         fecharModal(modalObjeto3);
     }
+
+    if (event.target == modalObjeto4) {
+        fecharModal(modalObjeto4);
+    }
 });
 
 const verificaQtdPontos = (qtdMinDePontos) => {
@@ -135,7 +154,7 @@ const verificaQtdPontos = (qtdMinDePontos) => {
 
         setTimeout(() => {
             modalGanhou.style.display = "none";
-            encaminharProximaFase("terceira-fase");
+            encaminharProximaFase("quarta-fase");
         }, 5000)
 
     }
