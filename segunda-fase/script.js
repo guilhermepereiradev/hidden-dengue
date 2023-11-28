@@ -1,24 +1,24 @@
-const pneu = document.getElementById("pneu");
-const garrafas = document.getElementById("garrafas");
-const vaso = document.getElementById("vaso");
+const objeto1 = document.getElementById("objeto1"); //Objeto1: pneu
+const objeto2 = document.getElementById("objeto2"); //Objeto2: garrafas
+const objeto3 = document.getElementById("objeto3"); //Objeto3: vaso de planta
 
-const modalPneu = document.getElementById("modalPneu");
-const modalGarrafas = document.getElementById("modalGarrafas");
-const modalVaso = document.getElementById("modalVaso");
+const modalObjeto1 = document.getElementById("modalObjeto1");
+const modalObjeto2 = document.getElementById("modalObjeto2");
+const modalObjeto3 = document.getElementById("modalObjeto3");
 
-const fecharModalPneu = document.getElementById("fecharModalPneu");
-const fecharModalGarrafas = document.getElementById("fecharModalGarrafas");
-const fecharModalVaso = document.getElementById("fecharModalVaso");
-
-const modalGanhou = document.getElementById("modalGanhou");
-const modalPerdeu = document.getElementById("modalPerdeu");
+const fecharModalObjeto1 = document.getElementById("fecharModalObjeto1");
+const fecharModalObjeto2 = document.getElementById("fecharModalObjeto2");
+const fecharModalObjeto3 = document.getElementById("fecharModalObjeto3");
 
 const fecharModalGanhou = document.getElementById("fecharModalGanhou");
 const fecharModalPerdeu = document.getElementById("fecharModalPerdeu");
 
-const imagemPneu = document.getElementById("imagemPneu");
-const imagemGarrafas = document.getElementById("imagemGarrafas");
-const imagemVaso = document.getElementById("imagemVaso");
+const imagemObjeto1 = document.getElementById("imagemObjeto1");
+const imagemObjeto2 = document.getElementById("imagemObjeto2");
+const imagemObjeto3 = document.getElementById("imagemObjeto3");
+
+const modalGanhou = document.getElementById("modalGanhou");
+const modalPerdeu = document.getElementById("modalPerdeu");
 
 const imagemCenario = document.getElementById("imagem-cenario");
 
@@ -29,15 +29,11 @@ const localStorage = window.localStorage;
 let vidas = !localStorage.getItem("vidas") ? 3 : localStorage.getItem("vidas");
 let pontos = 0;
 
-let clicouPneu = false;
-let clicouGarrafas = false;
-let clicouVaso = false;
+let clicouObjeto1 = false;
+let clicouObjeto2 = false;
+let clicouObjeto3 = false;
 
 window.onload = () => {
-
-    if (localStorage.getItem("faseAtual") != "segunda-fase") {
-        window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
-    }    
     
     confereCoracoesPreenchidos();
 
@@ -52,31 +48,31 @@ window.onunload = () => {
     audio.currentTime = localStorage.setItem("musicaTempoAtual", audio.currentTime);
 }
 
-pneu.addEventListener("click", () => {
-    abrirModal(modalPneu, imagemPneu, "pneu.png");
-    clicouPneu = verificaJaClicouObjeto(clicouPneu);
+objeto1.addEventListener("click", () => {
+    abrirModal(modalObjeto1, imagemObjeto1, "pneu-f2.png");
+    clicouObjeto1 = verificaJaClicouObjeto(clicouObjeto1);
 });
 
-garrafas.addEventListener("click", () => {
-    abrirModal(modalGarrafas, imagemGarrafas, "garrafas.png")
-    clicouGarrafas = verificaJaClicouObjeto(clicouGarrafas);
+objeto2.addEventListener("click", () => {
+    abrirModal(modalObjeto2, imagemObjeto2, "garrafas-f2.png")
+    verificaJaClicouObjeto(clicouObjeto2);
 });
 
-vaso.addEventListener("click", () => {
-    abrirModal(modalVaso, imagemVaso, "vaso.png")
-    clicouVaso = verificaJaClicouObjeto(clicouVaso);
+objeto3.addEventListener("click", () => {
+    abrirModal(modalObjeto3, imagemObjeto3, "vaso-f2.png")
+    verificaJaClicouObjeto(clicouObjeto3);
 });
 
-fecharModalPneu.addEventListener("click", () => {
-    fecharModal(modalPneu);
+fecharModalObjeto1.addEventListener("click", () => {
+    fecharModal(modalObjeto1);
 });
 
-fecharModalGarrafas.addEventListener("click", () => {
-    fecharModal(modalGarrafas);
+fecharModalObjeto2.addEventListener("click", () => {
+    fecharModal(modalObjeto2);
 });
 
-fecharModalVaso.addEventListener("click", () => {
-    fecharModal(modalVaso);
+fecharModalObjeto3.addEventListener("click", () => {
+    fecharModal(modalObjeto3);
 });
 
 fecharModalGanhou.addEventListener("click", () => {
@@ -111,7 +107,7 @@ const confereCoracoesPreenchidos = () => {
 
 const abrirModal = (modal, imagem, novaImagem) => {
     modal.style.display = "block";
-    imagem.src = `/assets/primeira-fase/${novaImagem}`;
+    imagem.src = `/assets/segunda-fase/${novaImagem}`;
 }
 
 const fecharModal = (modal) => {
@@ -120,29 +116,22 @@ const fecharModal = (modal) => {
 }
 
 window.addEventListener('click', (event) => {
-    if (event.target == modalPneu) {
-        fecharModal(modalPneu);
+    if (event.target == modalObjeto1) {
+        fecharModal(modalObjeto1);
     }
 
-    if (event.target == modalGarrafas) {
-        fecharModal(modalGarrafas);
-    }
-
-    if (event.target == modalVaso) {
-        fecharModal(modalVaso);
+    if (event.target == modalObjeto2) {
+        fecharModal(modalObjeto2);
     }
 });
 
 const verificaQtdPontos = (qtdMinDePontos) => {
-    console.log(pontos);
     if (pontos >= qtdMinDePontos) {
-        modalGanhou.style.display = "block"
-
-        console.log("teste1");
+        modalGanhou.style.display = "block";
 
         setTimeout(() => {
-            modalGanhou.style.display = "none"
-            encaminharProximaFase("terceira-fase");
+            modalGanhou.style.display = "none";
+            encaminharProximaFase("segunda-fase");
         }, 5000)
 
     }
@@ -176,7 +165,7 @@ const encaminharProximaFase = (proximaFase) => {
 
 const encaminharParaInicio = () => {
     localStorage.setItem("faseAtual", "primeira-fase");
-    localStorage.setItem("vidas", 3);
+    localStorage.setItem("vidas", 3)
     window.location.href = "/index.html";
 }
 

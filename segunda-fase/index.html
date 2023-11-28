@@ -11,17 +11,18 @@
 
 <body>
     <div class="content">
-        <img id="imagem-cenario" src="/assets/segunda-fase/cenario-segunda-fase.jpg" alt="Cenário" usemap="#objetos">
-        <map name="objetos">
-            <area shape="poly"
-                coords="3, 479, 0, 471, 0, 451, 3, 442, 12, 433, 22, 426, 38, 424, 47, 425, 55, 429, 60, 434, 64, 439, 66, 445, 66, 481, 60, 490, 54, 494, 31, 497, 18, 488"
-                alt="pneu" id="pneu">
-            <area shape="poly" coords="543, 394, 533, 394, 530, 391, 530, 376, 533, 370, 545, 371, 550, 377, 549, 391"
-                alt="garrafas" id="garrafas">
-            <area shape="poly"
-                coords="251, 377, 244, 379, 238, 377, 234, 366, 232, 362, 231, 360, 255, 355, 229, 347, 234, 339, 244, 334, 256, 340, 257, 344, 263, 353, 258, 359, 257, 363, 255, 365, 251, 377"
-                alt="vaso" id="vaso">
-        </map>
+        <img id="imagem-cenario" src="/assets/segunda-fase/cenario-segunda-fase.jpg" alt="Cenário"
+            usemap="#objetos">
+            <map name="objetos">
+                <area shape="poly"
+                    coords="3, 479, 0, 471, 0, 451, 3, 442, 12, 433, 22, 426, 38, 424, 47, 425, 55, 429, 60, 434, 64, 439, 66, 445, 66, 481, 60, 490, 54, 494, 31, 497, 18, 488"
+                    alt="objeto1" id="objeto1">
+                <area shape="poly" coords="543, 394, 533, 394, 530, 391, 530, 376, 533, 370, 545, 371, 550, 377, 549, 391"
+                    alt="objeto2" id="objeto2">
+                <area shape="poly"
+                    coords="251, 377, 244, 379, 238, 377, 234, 366, 232, 362, 231, 360, 255, 355, 229, 347, 234, 339, 244, 334, 256, 340, 257, 344, 263, 353, 258, 359, 257, 363, 255, 365, 251, 377"
+                    alt="objeto3" id="objeto3">
+            </map>
         <div class="lateral">
             <div class="vidas">
                 <div id="numero-vidas">
@@ -32,18 +33,14 @@
                 <p>Vidas</p>
             </div>
             <div class="historia">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores consequatur omnis perferendis ullam
-                sequi, quae, reprehenderit necessitatibus excepturi
-                nostrum ipsa dolorum. Dolores, quidem. Esse, corporis? Ea fugit rem eius blanditiis? Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Cupiditate fuga
-                cumque unde ab voluptatibus culpa vero ipsum excepturi magni nemo nam earum ad aspernatur tenetur
-                impedit totam, repellendus iure rem!
+                Em uma noite nublada, uma chuva forte caiu na cidade do Vale Verde, no dia seguinte algo não estava certo, a água havia se acumulado em recipientes
+                esquecidos próximo à garagem de Geraldo em seu quintal, e adivinha quem apareceu? Os mosquitos da dengue! Por causa da água parada, esses recipientes 
+                tornaram-se lugares perfeitos para a proliferação do mosquito, encontre esses objetos para ajudar o Geraldo a resolver esse problema.
             </div>
             <div class="objetos">
-                <img class="objeto-imagem" src="/assets/segunda-fase/pneu.png" alt="pneu" id="imagemPneu">
-                <img class="objeto-imagem" src="/assets/segunda-fase/garrafas.png" alt="garras vazias"
-                    id="imagemGarrafas">
-                <img class="objeto-imagem" src="/assets/segunda-fase/vaso.png" alt="vaso de planta" id="imagemVaso">
+                <img class="objeto-imagem" src="/assets/segunda-fase/pneu-desfocado-f2.png" alt="objeto1" id="imagemObjeto1">
+                <img class="objeto-imagem" src="/assets/segunda-fase/garrafas-desfocado-f2.png" alt="objeto2" id="imagemObjeto2">
+                <img class="objeto-imagem" src="/assets/segunda-fase/vaso-desfocado-f2.png" alt="objeto2" id="imagemObjeto3">
             </div>
         </div>
     </div>
@@ -59,37 +56,24 @@
     <img id="botaoReproduzir" src="/img/desativado.png" alt="Play">
 
 
-    <div id="modalPneu" class="modal">
+    <div id="modalObjeto1" class="modal">
         <div class="conteudoModal">
-            <span id="fecharModalPneu" class="fecharModal">&times;</span>
-            Pneu - Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores doloremque tenetur culpa error,
-            sunt excepturi architecto, quod dolore eius consectetur
-            beatae officia nam fugit. Itaque aliquam maiores eaque alias eius? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Enim dicta ducimus ea cum aspernatur
-            aperiam, atque ab blanditiis consequuntur? Blanditiis magni repellendus ipsam autem ab nesciunt eligendi.
-            Autem, dolores voluptate.
+            <span id="fecharModalObjeto1" class="fecharModal">&times;</span>
+            Parabéns você encontrou o pneu!
         </div>
     </div>
 
-    <div id="modalGarrafas" class="modal">
+    <div id="modalObjeto2" class="modal">
         <div class="conteudoModal">
-            <span id="fecharModalGarrafas" class="fecharModal">&times;</span>
-            Garrafas - Parabéns você encontrou a lata de lixo! Se você encontrar uma lata de lixo com água parada, é
-            importante tomar medidas imediatas para impedir a proliferação
-            do mosquito da dengue, como esvaziar toda a água acumulada e tampar a lata adequadamente, evitando que a
-            água se acumule novamente. Essas ações simples contribuem
-            para manter nosso ambiente seguro e livre de mosquitos transmissores de doenças
+            <span id="fecharModalObjeto2" class="fecharModal">&times;</span>
+            Parabéns você encontrou as garrafas!
         </div>
     </div>
 
-    <div id="modalVaso" class="modal">
+    <div id="modalObjeto3" class="modal">
         <div class="conteudoModal">
-            <span id="fecharModalVaso" class="fecharModal">&times;</span>
-            Vaso Parabéns você encontrou a lata de lixo! Se você encontrar uma lata de lixo com água parada, é
-            importante tomar medidas imediatas para impedir a proliferação
-            do mosquito da dengue, como esvaziar toda a água acumulada e tampar a lata adequadamente, evitando que a
-            água se acumule novamente. Essas ações simples contribuem
-            para manter nosso ambiente seguro e livre de mosquitos transmissores de doenças
+            <span id="fecharModalObjeto3" class="fecharModal">&times;</span>
+            Parabéns você encontrou o vaso de planta!
         </div>
     </div>
 
@@ -103,7 +87,7 @@
     <div id="modalGanhou" class="modal">
         <div class="conteudoModal">
             <span id="fecharModalGanhou" class="fecharModal">&times;</span>
-            Parabéns você encontrou todos os objetos dessa fase, vamos para o proximo desafio;
+            Parabéns você encontrou todos os objetos dessa fase, vamos para o proximo desafio.
         </div>
     </div>
 

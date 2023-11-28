@@ -1,17 +1,17 @@
-const lataDeLixo = document.getElementById("lataDeLixo");
-const pneu = document.getElementById("pneu");
+const objeto1 = document.getElementById("objeto1"); //Objeto1: pneu
+const objeto2 = document.getElementById("objeto2"); //Objeto2: lata de lixo
 
-const modalLataDeLixo = document.getElementById("modalLataDeLixo");
-const modalPneu = document.getElementById("modalPneu");
+const modalObjeto1 = document.getElementById("modalObjeto1");
+const modalObjeto2 = document.getElementById("modalObjeto2");
 
-const fecharModalLataDeLixo = document.getElementById("fecharModalLataDeLixo");
-const fecharModalPneu = document.getElementById("fecharModalPneu");
+const fecharModalObjeto1 = document.getElementById("fecharModalObjeto1");
+const fecharModalObjeto2 = document.getElementById("fecharModalObjeto2");
 
 const fecharModalGanhou = document.getElementById("fecharModalGanhou");
 const fecharModalPerdeu = document.getElementById("fecharModalPerdeu");
 
-const imagemLataDeLixo = document.getElementById("imagemLataDeLixo");
-const imagemPneu = document.getElementById("imagemPneu");
+const imagemObjeto1 = document.getElementById("imagemObjeto1");
+const imagemObjeto2 = document.getElementById("imagemObjeto2");
 
 const modalGanhou = document.getElementById("modalGanhou");
 const modalPerdeu = document.getElementById("modalPerdeu");
@@ -25,8 +25,8 @@ const localStorage = window.localStorage;
 let vidas = !localStorage.getItem("vidas") ? 3 : localStorage.getItem("vidas");
 let pontos = 0;
 
-let clicouPneu = false;
-let clicouLataDeLixo = false;
+let clicouObjeto1 = false;
+let clicouObjeto2 = false;
 
 window.onload = () => {
     
@@ -43,22 +43,22 @@ window.onunload = () => {
     audio.currentTime = localStorage.setItem("musicaTempoAtual", audio.currentTime);
 }
 
-lataDeLixo.addEventListener("click", () => {
-    abrirModal(modalLataDeLixo, imagemLataDeLixo, "lata-de-lixo.png");
-    clicouLataDeLixo = verificaJaClicouObjeto(clicouLataDeLixo);
+objeto1.addEventListener("click", () => {
+    abrirModal(modalObjeto1, imagemObjeto1, "pneu-f1.png");
+    clicouObjeto1 = verificaJaClicouObjeto(clicouObjeto1);
 });
 
-pneu.addEventListener("click", () => {
-    abrirModal(modalPneu, imagemPneu, "pneu.png")
-    verificaJaClicouObjeto(clicouPneu);
+objeto2.addEventListener("click", () => {
+    abrirModal(modalObjeto2, imagemObjeto2, "lata-de-lixo-f1.png")
+    verificaJaClicouObjeto(clicouObjeto2);
 });
 
-fecharModalPneu.addEventListener("click", () => {
-    fecharModal(modalPneu);
+fecharModalObjeto1.addEventListener("click", () => {
+    fecharModal(modalObjeto1);
 });
 
-fecharModalLataDeLixo.addEventListener("click", () => {
-    fecharModal(modalLataDeLixo);
+fecharModalObjeto2.addEventListener("click", () => {
+    fecharModal(modalObjeto2);
 });
 
 fecharModalGanhou.addEventListener("click", () => {
@@ -102,12 +102,12 @@ const fecharModal = (modal) => {
 }
 
 window.addEventListener('click', (event) => {
-    if (event.target == modalLataDeLixo) {
-        fecharModal(modalLataDeLixo);
+    if (event.target == modalObjeto1) {
+        fecharModal(modalObjeto1);
     }
 
-    if (event.target == modalPneu) {
-        fecharModal(modalPneu);
+    if (event.target == modalObjeto2) {
+        fecharModal(modalObjeto2);
     }
 });
 
