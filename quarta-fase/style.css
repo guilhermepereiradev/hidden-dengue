@@ -1,0 +1,7 @@
+@import url(../primeira-fase/style.css);
+
+@media (max-width: 1400px) {
+    .historia {
+        margin-top: -40px;
+    }
+}
