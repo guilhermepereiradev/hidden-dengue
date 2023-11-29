@@ -44,6 +44,10 @@ let clicouObjeto4 = false;
 let clicouObjeto5 = false;
 
 window.onload = () => {
+
+    if (localStorage.getItem("faseAtual") != "quarta-fase") {
+        window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+    }   
     
     confereCoracoesPreenchidos();
 
@@ -65,22 +69,22 @@ objeto1.addEventListener("click", () => {
 
 objeto2.addEventListener("click", () => {
     abrirModal(modalObjeto2, imagemObjeto2, "barril-f4.png")
-    verificaJaClicouObjeto(clicouObjeto2);
+    clicouObjeto2 = verificaJaClicouObjeto(clicouObjeto2);
 });
 
 objeto3.addEventListener("click", () => {
     abrirModal(modalObjeto3, imagemObjeto3, "garrafa-f4.png")
-    verificaJaClicouObjeto(clicouObjeto3);
+    clicouObjeto3 = verificaJaClicouObjeto(clicouObjeto3);
 });
 
 objeto4.addEventListener("click", () => {
     abrirModal(modalObjeto4, imagemObjeto4, "pneu-f4.png")
-    verificaJaClicouObjeto(clicouObjeto4);
+    clicouObjeto4 = verificaJaClicouObjeto(clicouObjeto4);
 });
 
 objeto5.addEventListener("click", () => {
     abrirModal(modalObjeto5, imagemObjeto5, "vaso-f4.png")
-    verificaJaClicouObjeto(clicouObjeto5);
+    clicouObjeto5 = verificaJaClicouObjeto(clicouObjeto5);
 });
 
 fecharModalObjeto1.addEventListener("click", () => {

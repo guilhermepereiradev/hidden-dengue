@@ -35,6 +35,10 @@ let clicouObjeto3 = false;
 
 window.onload = () => {
     
+    if (localStorage.getItem("faseAtual") != "segunda-fase") {
+        window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+    }   
+
     confereCoracoesPreenchidos();
 
     if (localStorage.getItem("reproduzirMusica") == "true") {
@@ -55,12 +59,12 @@ objeto1.addEventListener("click", () => {
 
 objeto2.addEventListener("click", () => {
     abrirModal(modalObjeto2, imagemObjeto2, "garrafas-f2.png")
-    verificaJaClicouObjeto(clicouObjeto2);
+    clicouObjeto2 = verificaJaClicouObjeto(clicouObjeto2);
 });
 
 objeto3.addEventListener("click", () => {
     abrirModal(modalObjeto3, imagemObjeto3, "vaso-f2.png")
-    verificaJaClicouObjeto(clicouObjeto3);
+    clicouObjeto3 = verificaJaClicouObjeto(clicouObjeto3);
 });
 
 fecharModalObjeto1.addEventListener("click", () => {

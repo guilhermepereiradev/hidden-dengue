@@ -39,6 +39,10 @@ let clicouObjeto3 = false;
 let clicouObjeto4 = false;
 
 window.onload = () => {
+
+    if (localStorage.getItem("faseAtual") != "terceira-fase") {
+        window.location.href = `/${localStorage.getItem("faseAtual")}/index.html`;
+    }   
     
     confereCoracoesPreenchidos();
 
@@ -60,17 +64,17 @@ objeto1.addEventListener("click", () => {
 
 objeto2.addEventListener("click", () => {
     abrirModal(modalObjeto2, imagemObjeto2, "lata-de-lixo-f3.png")
-    verificaJaClicouObjeto(clicouObjeto2);
+    clicouObjeto2 = verificaJaClicouObjeto(clicouObjeto2);
 });
 
 objeto3.addEventListener("click", () => {
     abrirModal(modalObjeto3, imagemObjeto3, "pneu-f3.png")
-    verificaJaClicouObjeto(clicouObjeto3);
+    clicouObjeto3 = verificaJaClicouObjeto(clicouObjeto3);
 });
 
 objeto4.addEventListener("click", () => {
     abrirModal(modalObjeto4, imagemObjeto4, "vaso-f3.png")
-    verificaJaClicouObjeto(clicouObjeto4);
+    clicouObjeto4 = verificaJaClicouObjeto(clicouObjeto4);
 });
 
 fecharModalObjeto1.addEventListener("click", () => {

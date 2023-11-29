@@ -50,7 +50,7 @@ objeto1.addEventListener("click", () => {
 
 objeto2.addEventListener("click", () => {
     abrirModal(modalObjeto2, imagemObjeto2, "lata-de-lixo-f1.png")
-    verificaJaClicouObjeto(clicouObjeto2);
+    clicouObjeto2 = verificaJaClicouObjeto(clicouObjeto2);
 });
 
 fecharModalObjeto1.addEventListener("click", () => {
