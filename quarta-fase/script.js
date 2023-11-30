@@ -109,7 +109,7 @@ fecharModalObjeto5.addEventListener("click", () => {
 
 fecharModalGanhou.addEventListener("click", () => {
     fecharModal(modalGanhou);
-    encaminharProximaFase("quarta-fase");
+    encaminharParaInicio();
 });
 
 fecharModalPerdeu.addEventListener("click", () => {
@@ -172,12 +172,6 @@ window.addEventListener('click', (event) => {
 const verificaQtdPontos = (qtdMinDePontos) => {
     if (pontos >= qtdMinDePontos) {
         modalGanhou.style.display = "block";
-
-        setTimeout(() => {
-            modalGanhou.style.display = "none";
-            encaminharProximaFase("quarta-fase");
-        }, 5000)
-
     }
 }
 
