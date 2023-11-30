@@ -126,6 +126,6 @@ button:hover {
 @media (max-width: 1400px) {
     .conteudoModal {
         font-size: 1.6rem;
-        margin: 5% auto;
+        margin: 2% auto;
     }
 }
