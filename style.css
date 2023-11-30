@@ -117,4 +117,15 @@ button:hover {
    .botoes {
     margin-top: 5%;
    }
+   .conteudoModal {
+    font-size: 1.8rem;
+    margin: 5% auto;
+   }
+}
+
+@media (max-width: 1400px) {
+    .conteudoModal {
+        font-size: 1.6rem;
+        margin: 5% auto;
+    }
 }
